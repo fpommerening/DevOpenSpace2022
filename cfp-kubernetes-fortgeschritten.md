@@ -1,5 +1,5 @@
 ## Titel
-Kubernetes für Entwickler (Erweitert)
+Kubernetes für Entwickler (Fortgeschritten)
 
 ## Typ
 Workshop
