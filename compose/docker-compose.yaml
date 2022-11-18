@@ -1,0 +1,25 @@
+version: "3.5"
+services: 
+    messagedb:
+        image: mongo:4.2-bionic
+        networks: 
+            - msgnet
+        volumes: 
+            - data:/var/mongo/data
+    webapp:
+        image: fpommerening/docker-training:messages.dotnet
+        networks: 
+            - msgnet
+            - frontend
+        ports: 
+            - 5000:5000
+        environment: 
+            - MessageConnectionString=mongodb://messagedb
+        depends_on: 
+            - messagedb
+networks: 
+    msgnet:
+        
+    frontend:
+volumes: 
+    data:

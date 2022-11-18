@@ -1,0 +1,1 @@
+kubectl run -i --tty util --rm --image=fpommerening/container-training:network-utils /bin/bash
