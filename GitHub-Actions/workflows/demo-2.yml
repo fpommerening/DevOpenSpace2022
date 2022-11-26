@@ -1,0 +1,14 @@
+name: demo-2
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Name
+        required: true
+        type: string
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hallo
+        run: echo "Hallo DevOpenSpace ${{ inputs.name }}"
