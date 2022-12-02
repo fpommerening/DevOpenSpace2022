@@ -3,4 +3,10 @@ kind: Job
 metadata:
   name: my-onetime-job
 spec:
- 
+  template:
+    spec:
+      containers:
+        - image: busybox:1.28
+          name: app
+          command: ["sh", "-c", "echo The app is running! && sleep 45 && echo The work is done!"]
+      restartPolicy: OnFailure
