@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  index.html: |-
+    <html>
+        <body>
+            Hallo DevOpenSpace 2022
+        </body>
+    </html>
+kind: ConfigMap
+metadata:
+  name: cfgvol
