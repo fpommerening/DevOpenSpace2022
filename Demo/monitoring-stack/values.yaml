@@ -1,0 +1,8 @@
+global:
+  baseUrl: test.demo-apps.de
+
+jumpbox:
+  password: DevOpenSpace2022
+
+code-server:
+  password: DevOpenSpace2022
