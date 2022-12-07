@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: visa-svc
+   namespace: banking
+spec:
+  type: ClusterIP
+  selector:
+      app: visa
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+   name: master-svc
+   namespace: banking
+spec:
+  type: ClusterIP
+  selector:
+      app: master
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visa-dep
+  namespace: banking
+spec:
+  selector:
+    matchLabels:
+      app: visa
+  template:
+    metadata:
+      labels:
+        app: visa
+    spec:
+      containers:
+      - image: fpommerening/container-training:webapp-v1
+        name: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: master-dep
+  namespace: banking
+spec:
+  selector:
+    matchLabels:
+      app: master
+  template:
+    metadata:
+      labels:
+        app: master
+    spec:
+      containers:
+      - image: fpommerening/container-training:webapp-v1
+        name: app
