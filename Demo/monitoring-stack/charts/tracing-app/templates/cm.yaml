@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  payment.appsettings.json: "{\r\n    \"VisaServiceUrl\" : \"http://visa-svc.banking\",\r\n
+    \   \"MasterServiceUrl\" : \"http://master-svc.banking\",\r\n    \"OpenTelemetryUrl\"
+    : \"http://dos-opentelemetry:4317\"\r\n}\r\n  "
+  stock.appsettings.json: "{\r\n    \"OpenTelemetryUrl\" : \"http://dos-opentelemetry:4317\"\r\n}\r\n  "
+  ui.appsettings.json: "{\r\n    \"OpenTelemetryUrl\" : \"http://dos-opentelemetry:4317\",\r\n    \"StockServiceUrl\"
+    : \"http://{{ include "tracing-app.fullname" . }}-stock\",\r\n    \"PaymentServiceUrl\" : \"http://{{ include "tracing-app.fullname" . }}-payment\"\r\n\r\n\r\n}\r\n
+    \ "
+kind: ConfigMap
+metadata:
+  name: {{ include "tracing-app.fullname" . }}-cm
+  labels:
+    {{- include "tracing-app.labels" . | nindent 4 }}

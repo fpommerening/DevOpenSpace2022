@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tracing-app.fullname" . }}-stock-dep
+  labels:
+    {{- include "tracing-app.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+   matchLabels:
+      {{- include "tracing-app.selectorLabels" . | nindent 6 }}
+      app: stock
+  template:
+    metadata:
+      labels:
+        {{- include "tracing-app.selectorLabels" . | nindent 8 }}
+        app: stock
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.stock.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.stock.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 6001
+              protocol: TCP
+          volumeMounts:
+            - name: cfg
+              mountPath: /app/appsettings.Production.json
+              subPath: stock.appsettings.json
+      volumes:
+        - name: cfg
+          configMap:
+            name: {{ include "tracing-app.fullname" . }}-cm

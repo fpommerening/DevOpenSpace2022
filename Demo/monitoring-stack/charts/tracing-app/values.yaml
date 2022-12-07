@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/fpommerening/monitoring-for-devops
+  ui:
+    pullPolicy: IfNotPresent
+    tag: "tracing-ui"
+  stock:
+    pullPolicy: IfNotPresent
+    tag: "tracing-stockservice"
+  payment:
+    pullPolicy: IfNotPresent
+    tag: "tracing-paymentservice"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  host: tracing-app.demo-apps.de
+  entryPoint: web
+
+  
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi

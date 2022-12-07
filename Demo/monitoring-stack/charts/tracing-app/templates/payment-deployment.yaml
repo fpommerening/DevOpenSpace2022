@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tracing-app.fullname" . }}-payment-dep
+  labels:
+    {{- include "tracing-app.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+   matchLabels:
+      {{- include "tracing-app.selectorLabels" . | nindent 6 }}
+      app: payment
+  template:
+    metadata:
+      labels:
+        {{- include "tracing-app.selectorLabels" . | nindent 8 }}
+        app: payment
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.payment.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.payment.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 7001
+              protocol: TCP
+          volumeMounts:
+            - name: cfg
+              mountPath: /app/appsettings.Production.json
+              subPath: payment.appsettings.json
+      volumes:
+        - name: cfg
+          configMap:
+            name: {{ include "tracing-app.fullname" . }}-cm
