@@ -11,5 +11,9 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: 25
+      targetPort: smtp
+      protocol: TCP
+      name: smtp
   selector:
     {{- include "smtp4dev.selectorLabels" . | nindent 4 }}

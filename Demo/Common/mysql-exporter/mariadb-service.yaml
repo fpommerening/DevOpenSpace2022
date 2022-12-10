@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mariadb-svc
+  namespace: database
 spec:
   selector:
     app: mariadb

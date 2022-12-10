@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mysqld-exporter-svc
+  namespace: database
 spec:
   selector:
     app: mysqld-exporter
