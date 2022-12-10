@@ -1,0 +1,5 @@
+helm repo add jetstack https://charts.jetstack.io
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+
+helm install cert-manager jetstack/cert-manager --set installCRDs=true --namespace cert-manager  --create-namespace   --version v1.10.1
+helm install operator jaegertracing/jaeger-operator --set rbac.clusterRole=true --create-namespace -n jaeger --version 2.38.0
