@@ -1,0 +1,10 @@
+groups:
+- name: my_alert_rules
+  rules:
+  - alert: Blackbox_Host_Down
+    expr: probe_success{job="blackbox"} == 0
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      summary: host down (instance {{ $labels.instance }})

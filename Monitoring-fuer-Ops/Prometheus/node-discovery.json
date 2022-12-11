@@ -1,0 +1,20 @@
+[
+    {
+        "labels": {
+            "job": "node",
+            "alias": "docker-node"
+        },
+        "targets": [
+            "65.108.243.138:9100"
+        ]
+    },
+    {
+        "labels": {
+            "job": "app",
+            "alias": "app-node"
+        },
+        "targets": [
+            "dos-metrics-app:5001"
+        ]
+    }
+]
