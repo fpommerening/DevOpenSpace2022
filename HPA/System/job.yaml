@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: load-generator-job
+  namespace: system-metrics
+spec:
+  activeDeadlineSeconds: 120
+  template:
+    spec:
+      containers:
+        - name: app
+          image: busybox:1.28
+          command: ["sh", "-c", "while sleep 0.01; do wget -q -O- http://webapp-svc; done"]
+      restartPolicy: Never

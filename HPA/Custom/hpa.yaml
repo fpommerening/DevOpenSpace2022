@@ -1,0 +1,26 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: custom-hpa
+  namespace: custom-metrics
+spec:
+  scaleTargetRef:
+    
+  minReplicas: 1
+  maxReplicas: 9
+  metrics:
+
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Pods 
+        value: 2
+        periodSeconds: 30
+    scaleUp:
+      stabilizationWindowSeconds: 15
+      policies:
+      - type: Pods 
+        value: 2
+        periodSeconds: 20
+  
