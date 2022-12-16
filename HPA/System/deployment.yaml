@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-dep
-  namespace: custom-metrics
+  namespace: system-metrics
 spec:
   selector:
     matchLabels:
