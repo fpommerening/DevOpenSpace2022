@@ -5,16 +5,16 @@ metadata:
   namespace: custom-metrics
 spec:
   entryPoints:
-  - websecure
+  - web
   routes:
-  - match: Host(`hpa-custom.t.container-training.de`)
+  - match: Host(`hpacustom.t.container-training.de`)
     kind: Rule
     services:
     - name: custom-hpa-manager-svc
       port: 5001
-  tls:
-    certResolver: lets-encrypt-prod
+
 ---
+
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -22,12 +22,10 @@ metadata:
   namespace: monitoring
 spec:
   entryPoints:
-  - websecure
+  - web
   routes:
-  - match: Host(`promtheus.t.container-training.de`)
+  - match: Host(`prometheus.t.container-training.de`)
     kind: Rule
     services:
     - name: prometheus-operated
       port: 9090
-  tls:
-    certResolver: lets-encrypt-prod

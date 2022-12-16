@@ -1,0 +1,17 @@
+helm repo add webapp https://helm.container-training.de
+
+helm repo update
+
+helm search repo
+
+helm search repo  webapp/webapp --versions
+
+helm install -f probe-enabled.yml --version 1.0.0 myweb webapp/webapp
+
+helm upgrade -f probe-enabled.yml -f probe-disabled.yml --version 2.0.0 myweb webapp/webapp
+
+helm list
+
+helm list -n kube-system
+
+helm uninstall myweb

@@ -1,0 +1,3 @@
+ingressRoute:
+  enabled: true
+  host: helm.t.container-training.de
