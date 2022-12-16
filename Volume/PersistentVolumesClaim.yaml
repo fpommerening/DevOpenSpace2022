@@ -3,4 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: my-share-pvc
 spec:
-
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 100Mi
