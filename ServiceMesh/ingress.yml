@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: microservice-ir
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`microservice.t.container-training.de`)
+    kind: Rule
+    services:
+    - name: ui-srv
+      port: 80

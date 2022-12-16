@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: pingme-srv
+spec:
+  selector:
+   app: pingme
+  type: ClusterIP
+  ports:
+  - port: 5000
+    targetPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: time-srv
+spec:
+  selector:
+   app: time
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: ui-srv
+spec:
+  selector:
+   app: ui
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+    

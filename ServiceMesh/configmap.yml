@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ui-cm
+data:
+  PingMeUrl: "http://pingme-srv:5000"
+  TimeUrl: "http://time-srv:80/api/time/"

@@ -5,10 +5,23 @@ metadata:
   namespace: custom-metrics
 spec:
   scaleTargetRef:
-    
+    apiVersion: apps/v1
+    kind: Deployment
+    name: custom-hpa-worker-dep
   minReplicas: 1
-  maxReplicas: 9
+  maxReplicas: 6
   metrics:
+    - type: Object
+      object:
+        metric:
+          name: custom_hpa_rate
+        describedObject:
+          apiVersion: v1
+          kind: service
+          name: custom-hpa-manager-svc
+        target:
+          type: Value
+          value: 100
 
   behavior:
     scaleDown:
